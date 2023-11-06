@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --c-orange: hsl(35, 77%, 62%);
+  --c-red: hsl(5, 85%, 63%);
+  --c-gray: hsl(233, 8%, 79%);
+  --c-gray-alt: hsl(233, 8%, 59%);
+  --c-white: hsl(36, 100%, 99%);
+  --c-gray-blue: hsl(236, 13%, 42%);
+  --c-dark-blue: hsl(240, 100%, 5%);
+}
+
+body {
+  padding: 20px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  background-color: var(--c-white);
+  color: var(--c-gray-blue);
+}
+
+h1, h2 {
+  color: var(--c-dark-blue);
+  line-height: 1;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.content {
+  gap: 30px;
+  display: grid;
+  --columns: 1fr;
+  grid-template-columns: var(--columns);
+  grid-template-rows: repeat(3, min-content);
+}
+
+.page__h1 {
+  visibility: hidden;
+  position: absolute;
+}
+
+.content, .nav {
+  max-width: 1250px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__btn {
+  border: none;
+  background: none;
+}
+
+.nav__ul {
+  position: fixed;
+  right: 0;
+  top: 0;
+  list-style: none;
+  background-color: var(--c-white);
+
+  height: 100svh;
+  width: 65svw;
+  padding: 0 20px;
+  color: var(--c-dark-blue);
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.nav__ul--active {
+  pointer-events: auto;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.nav__ul li {
+  margin-top: 30px;
+}
+
+.nav__ul li:first-child {
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.main__img {
+  max-width: 100%;
+}
+
+.main__figure {
+  margin-bottom: 20px;
+}
+
+.main__h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.main__btn {
+  padding: 13px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  background: var(--c-red);
+  color: var(--c-white);
+  letter-spacing: 2px;
+  line-height: 22px;
+}
+
+.main__l-heading {
+  display: grid;
+  gap: 30px;
+  --columns: 1fr;
+  grid-template-columns: var(--columns);
+  margin-bottom: 20px;
+}
+
+.main__l-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.new {
+  padding: 30px 20px;
+  background-color: var(--c-dark-blue);
+}
+
+.new__heading {
+  color: var(--c-orange);
+  font-size: 30px;
+}
+
+.new__l-article {
+  --c-gray-darker: color-mix(in hsl, var(--c-gray) 85%, black);
+  margin-top: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--c-gray-darker);
+}
+
+.new__h1 {
+  color: var(--c-white);
+  font-size: 20px;
+}
+
+.new__p {
+  margin-top: 13px;
+  color: var(--c-gray-darker);
+  line-height: 1.5;
+}
+
+.new__l-article:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.featured {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  --column: auto;
+  --direction: column;
+  flex-direction: var(--direction);
+  grid-column: var(--column);
+  gap: 20px;
+}
+
+.featured__l-article {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.featured__number {
+  color: var(--c-gray);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.featured__img {
+  max-width: 100px;
+}
+
+.featured__h1 {
+  margin-top: 10px;
+}
+
+.featured__p {
+  margin-top: 10px;
+  color: color-mix(in hsl, var(--c-gray) 80%, black);
+}
+
+
+@media only screen and (min-width: 800px) {
+  .featured {
+    --direction: row;
+  }
+  .main__img {
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+  body {
+    font-size: 17px;
+  }
+  .content {
+    --columns: 2fr 1fr;
+  }
+  .main__h1 {
+    font-size: 60px;
+  }
+
+  .main__figure {
+    max-height: 350px;
+    overflow: hidden;
+
+  }
+
+  .main__l-heading {
+    --columns: 1fr 1fr;
+    margin-bottom: 0;
+  }
+
+  .new {
+    margin-top: 0;
+  }
+
+  .nav__btn--open {
+    display: none;
+  }
+
+  .nav__ul {
+    transform: translateX(0);
+    width: auto;
+    height: auto;
+    color: var(--c-gray-darker);
+    display: inline;
+    position: static;
+    padding: 0;
+    opacity: 1;
+  }
+
+
+  .nav__ul li {
+    margin-right: 40px;
+    display: inline;
+  }
+
+  .nav__ul li:first-child {
+    display: none;
+  }
+
+  .nav__ul li:last-child {
+    margin-right: 0;
+  }
+
+  .featured {
+    --column: span 2;
+  }
+
+  .featured__img {
+    max-width: 120px;
+  }
+
+  .featured__number {
+    font-size: 40px;
+  }
+}
