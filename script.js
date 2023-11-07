@@ -1,5 +1,3 @@
-console.log("hello")
-
 let slidein = document.querySelector("[data-slidein]");
 let openBtn = document.querySelector("[data-slidein-open]");
 let closeBtn = document.querySelector("[data-slidein-close]");
