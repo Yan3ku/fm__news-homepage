@@ -205,10 +205,12 @@ p {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  counter-set: count-articles;
   gap: 20px;
 }
 
 .featured__l-article {
+  counter-increment: count-articles;
   max-width: 600px;
   margin: 0 auto;
   flex: 1 1 400px;
@@ -217,10 +219,21 @@ p {
   gap: 20px;
 }
 
-.featured__number {
+.featured__h1::before {
+  display: block;
   color: var(--c-gray);
   font-size: 30px;
   font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.featured__h1::before {
+  content: counter(count-articles);
+}
+
+/* nth-child() selects until the value is positive */
+.featured__h1:nth-child(-n+9)::before {
+  content: '0'counter(count-articles);
 }
 
 .featured__img {
@@ -292,7 +305,7 @@ p {
     max-width: 120px;
   }
 
-  .featured__number {
+  .featured__h1::before {
     font-size: 40px;
   }
 }
