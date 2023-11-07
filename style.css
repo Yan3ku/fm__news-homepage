@@ -203,13 +203,14 @@ p {
 .featured {
   padding: 20px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .featured__l-article {
   max-width: 600px;
+  margin: 0 auto;
   flex: 1 1 400px;
   display: flex;
   align-items: center;
